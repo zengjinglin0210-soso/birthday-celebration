@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Gatsby Theme — Midnight & Champagne */
+    --background: 240 35% 2%;
+    --foreground: 42 35% 90%;
+    --card: 240 30% 4%;
+    --card-foreground: 42 35% 90%;
+    --popover: 240 28% 6%;
+    --popover-foreground: 42 35% 90%;
+    --primary: 43 88% 58%;
+    --primary-foreground: 240 35% 2%;
+    --secondary: 335 55% 52%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 18% 12%;
+    --muted-foreground: 42 12% 62%;
+    --accent: 240 15% 15%;
+    --accent-foreground: 42 35% 90%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 43 40% 18%;
+    --input: 43 40% 18%;
+    --ring: 43 88% 58%;
+    --radius: 0.5rem;
+
+    /* Gatsby Champagne Palette */
+    --champagne: 43 88% 58%;
+    --champagne-light: 46 92% 72%;
+    --champagne-dark: 41 70% 42%;
+    --champagne-pale: 44 40% 80%;
+    --gold-spark: 47 100% 75%;
+    --midnight: 240 35% 3%;
+    --midnight-blue: 225 30% 8%;
+    --art-deco-gold: 42 80% 55%;
+    --silver: 220 15% 65%;
+
+    /* Legacy token aliases for existing components */
+    --gold: 43 88% 58%;
+    --gold-light: 46 92% 72%;
+    --gold-dark: 41 70% 42%;
+    --rose-accent: 335 55% 52%;
+    --rose-light: 345 55% 68%;
+    --night: 240 30% 8%;
+    --night-deep: 240 35% 3%;
+  }
+
+  * { @apply border-border; }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Georgia', 'Times New Roman', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', serif;
+    overflow-x: hidden;
+    /* Mobile: prevent long-press context menu, text selection, pull-to-refresh */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
+    overscroll-behavior: none;
+  }
+
+  .font-handwriting {
+    font-family: 'Dancing Script', 'Georgia', cursive;
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: hsl(var(--midnight)); }
+  ::-webkit-scrollbar-thumb { background: hsl(var(--champagne-dark) / 0.5); border-radius: 3px; }
+}
+
+@layer components {
+  .text-champagne {
+    background: linear-gradient(135deg, hsl(var(--champagne-dark)), hsl(var(--champagne)), hsl(var(--champagne-light)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shimmer-gatsby {
+    background: linear-gradient(110deg, hsl(var(--champagne-dark)) 0%, hsl(var(--gold-spark)) 25%, hsl(var(--champagne-light)) 50%, hsl(var(--gold-spark)) 75%, hsl(var(--champagne-dark)) 100%);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer-gatsby 4s ease-in-out infinite;
+  }
+
+  .card-gatsby {
+    background: linear-gradient(160deg, hsl(240, 28%, 8%), hsl(240, 32%, 4%));
+    box-shadow: 0 8px 50px rgba(0, 0, 0, 0.7), 0 0 0 1px hsl(43, 40%, 20%);
+    position: relative;
+    border-radius: 0.75rem;
+  }
+  .card-gatsby::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, hsl(var(--champagne) / 0.4), transparent 40%, hsl(var(--champagne) / 0.15) 60%, transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .bg-gatsby-hero {
+    background: radial-gradient(ellipse at 50% 40%, hsl(225, 30%, 10%) 0%, hsl(240, 35%, 3%) 60%, hsl(240, 40%, 1%) 100%);
+  }
+}
+
+@layer utilities {
+  .text-shadow-gatsby {
+    text-shadow: 0 0 40px hsl(var(--champagne) / 0.3), 0 0 80px hsl(var(--champagne) / 0.1);
+  }
+  .drop-glow-gatsby {
+    filter: drop-shadow(0 0 20px hsl(var(--champagne) / 0.4));
+  }
+}

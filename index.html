@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <!-- WeChat / Open Graph preview -->
+    <meta property="og:title" content="生日快乐～" />
+    <meta property="og:description" content="叮叮叮！零点准时报到～" />
+    <meta property="og:type" content="website" />
+    <!-- Font: non-blocking load — media="print" trick prevents render blocking -->
+    <link rel="preload" href="https://fonts.font.im/css2?family=Dancing+Script:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.font.im/css2?family=Dancing+Script:wght@400;700&display=swap" /></noscript>
+    <title>生日快乐！</title>
+  </head>
+  <body>
+    <div id="root">
+      <!-- Inline loading skeleton — visible immediately, no JS required -->
+      <div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 40%,#121621,#05050a 60%,#020204);color:#c9a030;font-family:Georgia,'PingFang SC',serif;text-align:center;padding:20px">
+        <div style="width:60px;height:60px;border:3px solid rgba(201,160,48,0.3);border-top-color:#c9a030;border-radius:50%;animation:_bSpin 1s linear infinite;margin:0 auto 24px"></div>
+        <p style="font-size:18px;letter-spacing:0.15em;opacity:0.8">生日快乐～</p>
+        <p style="font-size:12px;margin-top:8px;opacity:0.4;letter-spacing:0.1em">加载中...</p>
+      </div>
+      <style>@keyframes _bSpin{to{transform:rotate(360deg)}}</style>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
