@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a1a3a"/>
+      <stop offset="50%" style="stop-color:#1a2a3a"/>
+      <stop offset="100%" style="stop-color:#3a1a2a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="200" cy="200" r="200" fill="url(#bg)"/>
+  <circle cx="200" cy="200" r="180" fill="url(#glow)"/>
+  <!-- Person silhouette -->
+  <circle cx="200" cy="155" r="45" fill="#FFD700" opacity="0.3"/>
+  <ellipse cx="200" cy="280" rx="70" ry="50" fill="#FFD700" opacity="0.2"/>
+  <!-- Text -->
+  <text x="200" y="340" text-anchor="middle" fill="#FFD700" font-size="16" font-family="system-ui" opacity="0.7">
+    请替换为朋友的照片
+  </text>
+  <text x="200" y="362" text-anchor="middle" fill="#888" font-size="12" font-family="system-ui" opacity="0.5">
+    替换 /public/friend-photo.jpg
+  </text>
+</svg>
