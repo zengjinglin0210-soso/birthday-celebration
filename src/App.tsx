@@ -181,7 +181,7 @@ export default function App() {
                   </div>
                 ) : null}
                 <img
-                  src="/friend-photo.jpg"
+                  src={`${import.meta.env.BASE_URL}friend-photo.jpg`}
                   alt="Friend"
                   className={`w-full h-full object-cover ${!photoLoaded ? 'hidden' : ''}`}
                   onLoad={() => setPhotoLoaded(true)}
