@@ -11,32 +11,33 @@ interface ConstellationStar {
   name?: string;
 }
 
-// Main Taurus stars
+// Main Taurus stars — spread 2.5x for visibility around centered content
+// Original offsets from center (0.44, 0.42) multiplied by 2.5
 const TAURUS_STARS: ConstellationStar[] = [
   // Hyades cluster (V-shape head)
-  { x: 0.48, y: 0.42, mag: 0.85, name: "α Aldebaran" },   // Aldebaran - the eye, brightest
-  { x: 0.44, y: 0.38, mag: 2.1, name: "γ" },               // Gamma Tauri
-  { x: 0.40, y: 0.44, mag: 2.0, name: "δ₁" },              // Delta1 Tauri
-  { x: 0.42, y: 0.48, mag: 1.9, name: "ε" },               // Epsilon Tauri
-  { x: 0.52, y: 0.46, mag: 2.0, name: "θ₂" },              // Theta2 Tauri
+  { x: 0.54, y: 0.42, mag: 0.85, name: "α Aldebaran" },   // Aldebaran - the eye, brightest
+  { x: 0.44, y: 0.32, mag: 2.1, name: "γ" },               // Gamma Tauri
+  { x: 0.34, y: 0.47, mag: 2.0, name: "δ₁" },              // Delta1 Tauri
+  { x: 0.39, y: 0.57, mag: 1.9, name: "ε" },               // Epsilon Tauri
+  { x: 0.64, y: 0.52, mag: 2.0, name: "θ₂" },              // Theta2 Tauri
   // Horn tips
-  { x: 0.30, y: 0.28, mag: 1.65, name: "β Elnath" },       // Elnath - horn tip
-  { x: 0.56, y: 0.30, mag: 2.2, name: "ζ" },               // Zeta Tauri - other horn
+  { x: 0.09, y: 0.07, mag: 1.65, name: "β Elnath" },       // Elnath - horn tip
+  { x: 0.74, y: 0.12, mag: 2.2, name: "ζ" },               // Zeta Tauri - other horn
   // Body extension
-  { x: 0.36, y: 0.35, mag: 2.5, name: "λ" },               // Lambda Tauri
-  { x: 0.46, y: 0.36, mag: 2.8 },
-  { x: 0.50, y: 0.39, mag: 2.7 },
+  { x: 0.24, y: 0.245, mag: 2.5, name: "λ" },              // Lambda Tauri
+  { x: 0.49, y: 0.27, mag: 2.8 },
+  { x: 0.59, y: 0.345, mag: 2.7 },
   // Pleiades cluster (upper shoulder area)
-  { x: 0.34, y: 0.52, mag: 1.6, name: "η Alcyone" },       // Alcyone - Pleiades center
-  { x: 0.32, y: 0.50, mag: 2.9 },                           // Pleiades star
-  { x: 0.36, y: 0.54, mag: 2.8 },                           // Pleiades star
-  { x: 0.33, y: 0.55, mag: 3.0 },                           // Pleiades star
-  { x: 0.30, y: 0.53, mag: 3.2 },                           // Pleiades star
-  { x: 0.37, y: 0.50, mag: 3.1 },                           // Pleiades star
+  { x: 0.19, y: 0.67, mag: 1.6, name: "η Alcyone" },       // Alcyone - Pleiades center
+  { x: 0.14, y: 0.62, mag: 2.9 },                           // Pleiades star
+  { x: 0.24, y: 0.72, mag: 2.8 },                           // Pleiades star
+  { x: 0.165, y: 0.745, mag: 3.0 },                         // Pleiades star
+  { x: 0.09, y: 0.695, mag: 3.2 },                          // Pleiades star
+  { x: 0.265, y: 0.62, mag: 3.1 },                          // Pleiades star
   // Extra body stars
-  { x: 0.54, y: 0.52, mag: 2.6 },
-  { x: 0.58, y: 0.48, mag: 2.9 },
-  { x: 0.38, y: 0.60, mag: 3.0 },
+  { x: 0.69, y: 0.67, mag: 2.6 },
+  { x: 0.79, y: 0.57, mag: 2.9 },
+  { x: 0.29, y: 0.87, mag: 3.0 },
 ];
 
 // Constellation lines connecting stars (by index)
@@ -171,10 +172,10 @@ export default function StarfieldBackground() {
       }
 
       // ─── Taurus Constellation ───
-      // Position constellation in center-upper area
+      // Position constellation so horns & Pleiades extend beyond centered content
       const cx = w * 0.5;
-      const cy = h * 0.35;
-      const scale = Math.min(w, h) * 0.38;
+      const cy = h * 0.3;
+      const scale = Math.max(w, h) * 0.45;
 
       // Map star position to screen
       const starPos = (s: ConstellationStar) => ({
@@ -189,11 +190,11 @@ export default function StarfieldBackground() {
         const pa = starPos(TAURUS_STARS[a]);
         const pb = starPos(TAURUS_STARS[b]);
 
-        // Subtle breathing opacity for lines
-        const lineAlpha = 0.06 + 0.03 * Math.sin(time * 0.015);
+        // Breathing opacity for lines
+        const lineAlpha = 0.12 + 0.06 * Math.sin(time * 0.015);
         ctx.globalAlpha = lineAlpha;
         ctx.strokeStyle = "#C9A030";
-        ctx.lineWidth = 0.8;
+        ctx.lineWidth = 1.0;
         ctx.beginPath();
         ctx.moveTo(pa.sx, pa.sy);
         ctx.lineTo(pb.sx, pb.sy);
@@ -246,9 +247,9 @@ export default function StarfieldBackground() {
 
       // ─── "Taurus" label ───
       ctx.globalCompositeOperation = "source-over";
-      ctx.globalAlpha = 0.12 + 0.05 * Math.sin(time * 0.01);
+      ctx.globalAlpha = 0.18 + 0.07 * Math.sin(time * 0.01);
       ctx.fillStyle = "#C9A030";
-      ctx.font = "italic 11px Georgia, serif";
+      ctx.font = "italic 13px Georgia, serif";
       ctx.textAlign = "center";
       ctx.fillText("Taurus ♉", cx, cy + scale * 0.28);
 
